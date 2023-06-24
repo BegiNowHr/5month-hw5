@@ -1,4 +1,11 @@
-import { legacy_createStore as createStore } from 'redux'
+import { legacy_createStore as createStore, combineReducers } from 'redux'
 import { counterReducer } from './counterReducer'
+import { todosReducer } from './todosReducer'
 
-export default createStore(counterReducer)
+
+const rootReducer = combineReducers({
+    todos: todosReducer,
+    counter: counterReducer
+})
+
+export default createStore(rootReducer)

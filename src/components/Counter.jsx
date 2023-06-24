@@ -4,7 +4,7 @@ import { useState } from "react"
 
 const Counter = () => {
     const [val, setVal] = useState(1)
-    const counter = useSelector(state => state.counter)
+    const {counter} = useSelector(state => state.counter)
     const dispatch = useDispatch()
 
     const onIncr = () => {

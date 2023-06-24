@@ -1,5 +1,6 @@
 const initialState = {
-    counter: 1
+    counter: 1,
+    abc: 1
 }
 // action - это объект, с обязательным полем type
 // {type: 'INCR_COUNTER'}
