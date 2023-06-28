@@ -1,3 +1,6 @@
+import axios from 'axios'
+
+
 const initialState = {
     items: []
 }
@@ -8,9 +11,23 @@ export const todosReducer = (state=initialState, action) => {
             return {items: [...state.items, action.payload]}   
         case 'REMOVE_TODO':
             return {items: state.items}
+        case 'SET_TODOS':
+            return {items: action.payload}
         default:
             return state
     }
+}
+
+
+// thunk - action creator
+// middleware - промежуточное ПО
+export const fetchTodos = () => {
+  return (dispatch) => {
+    axios.get('https://dummyjson.com/todos')
+    .then(res => {
+          dispatch({type: 'SET_TODOS', payload: res.data.todos}) // можно вынести в отдельный action creator
+    })
+  }
 }
 
 export const addTodo = (payload) => (
